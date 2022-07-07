@@ -6,7 +6,14 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "product")
+/**
+ * Entidad Product con los campos id, name, url_image, price, discount
+**/
 public class Product {
+    /**
+     * Declaramos nuestra clave primaria Id
+     * auto incrementativa de tipo long
+     **/
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -19,6 +26,11 @@ public class Product {
     private float price;
 
     private int discount;
+
+    /**
+     * Aqui asociamos nuestro producto en base a su cardinalidad de muchos a uno
+     * muchos productos pueden tener 1 categoria y una categoria puede tener muchos productos
+     **/
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="category")
     private Category category;
@@ -33,51 +45,33 @@ public class Product {
         this.category = category;
     }
 
+    /**
+     * Getters
+     * No necesitamos setters ya que solo mostramos la data de la bbdd de bsale
+     * **/
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getUrl_image() {
         return url_image;
-    }
-
-    public void setUrl_image(String url_image) {
-        this.url_image = url_image;
     }
 
     public float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
     public int getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
-        this.discount = discount;
-    }
 
     public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 }

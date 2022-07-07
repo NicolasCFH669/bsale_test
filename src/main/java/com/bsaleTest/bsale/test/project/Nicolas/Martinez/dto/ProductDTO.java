@@ -4,6 +4,11 @@ import com.bsaleTest.bsale.test.project.Nicolas.Martinez.models.Product;
 
 public class ProductDTO {
 
+    /**
+     * DTO Data Transfer Object
+     * que retorna un producto con las siguientes props
+     *  id, name, url_image, price, discount, category (asociado al id de categoria)
+     * **/
     private long id;
 
     private String name;
@@ -14,8 +19,13 @@ public class ProductDTO {
 
     private int discount;
 
-    private int category;
+    private Long category;
 
+    /**
+     * Constructor del DTO ProductDTO
+     * esta es la data que veremos reflejada en nuestra API
+     * /api/**
+     * **/
     public ProductDTO(Product product) {
         this.id = product.getId();
         this.name = product.getName();
@@ -25,6 +35,10 @@ public class ProductDTO {
         this.category = product.getCategory().getId();
     }
 
+    /**
+     * Getters
+     * No necesitamos setters ya que solo mostramos la data de la bbdd de bsale
+     * **/
     public long getId() {
         return id;
     }
@@ -45,7 +59,7 @@ public class ProductDTO {
         return discount;
     }
 
-    public int getCategory() {
+    public Long getCategory() {
         return category;
     }
 }
